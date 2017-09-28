@@ -16,21 +16,28 @@ namespace Vidiogeim
         public Form1()
         {
             InitializeComponent();
-            s1 = new SoundPlayer(@"C:/bing.wav");
-            s2 = new SoundPlayer(@"C:/bong.wav");
+            //s1 = new SoundPlayer(@"C:/____.wav");
+            //s2 = new SoundPlayer(@"C:/____.wav");
             r = new Random();
 
             g = pctCanvas.CreateGraphics();
-            main = new Objeto(0, 0);            
-            Cursor.Hide();
+            main = new Objeto(5, 5);            
             empezar();
         }
 
         static Random r;
-        SoundPlayer s1,s2;
+        //SoundPlayer s1,s2;
         Graphics g;
         Objeto main;
-        int contador;
+
+        private void reproducirSonido(int p)
+        {
+            //Se reproduce un sonido aleatorio de los 2 sonidos precargados.
+            //if (p == 1)
+            //    s1.Play();
+            //else
+            //    s2.Play();
+        }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -44,16 +51,15 @@ namespace Vidiogeim
 
         private void empezar()
         {
-            contador = 10;
-            Point Punto_Inicio = pctCanvas.Location;
-            Punto_Inicio.Offset(0, 0);
-            Cursor.Position = PointToScreen(Punto_Inicio);
+            //El punto vuelve a la esquina superior derecha
             main.reiniciar(g);
 
-            if (r.Next(1, 3) == 1)
-                s1.Play();
-            else
-                s2.Play();
+            //El cursor se va a la posición del punto
+            Point Punto_Inicio = pctCanvas.Location;
+            Punto_Inicio.Offset(0, 0);
+            Cursor.Position = PointToScreen(Punto_Inicio);            
+
+            //reproducirSonido(r.Next(1, 3));         
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -61,18 +67,15 @@ namespace Vidiogeim
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        { 
-            lblCont.Text = contador.ToString();
-            contador--;
-           
-            if (contador < 0)
-                contador = 10;
-        }
-
         private void Colission(object sender, EventArgs e)
         {
+            //Al chocar con una pared se reinicia el juego
             empezar();
+        }
+
+        private void pctCanvas_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor.Hide();
         }
     }
 }
