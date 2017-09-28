@@ -44,14 +44,14 @@ namespace Vidiogeim
         private void irIzquierda()
         {
             if (this.x == 0)
-                x = 1315;
+                x = 1320;
             else
                 x -= size;
         }
 
         private void irDerecha()
         {
-            if (this.x == 1315)
+            if (this.x == 1320)
                 x = 0;
             else
                 x += size;

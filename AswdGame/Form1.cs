@@ -21,7 +21,7 @@ namespace Vidiogeim
             r = new Random();
 
             g = pctCanvas.CreateGraphics();
-            main = new Objeto(5, 5);            
+            main = new Objeto(0, 0);            
             empezar();
         }
 
